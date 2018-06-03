@@ -1,0 +1,27 @@
+<form>
+	Number:
+	<input type="text" id="mobileNumber" onblur="validateMobileNumber('mobileNumber','mobileNumberImg',this)"/>
+		<img src="" id="mobileNumberImg"><br>
+	Network:
+	<input type="text" id="network" onblur="validateNetwork('network','networkImg',this)"/>
+		<img src="" id="networkImg"> <br>
+	Alternative:
+	<input type="text" id="altNumber" onblur="validateAltNumber('altNumber','altNumberImg',this)" />
+		<img src="" id="altNumberImg"><br> 
+	User Name:
+	<input type="text" id="userName"  onblur="validateUserName('userName','userNameImg',this)"/>
+		<img src="" id="userNameImg"> <br>
+	Amount:
+	<input type="text" id="amount"  onblur="validateAmount('amount','amountImg',this)" />
+		<img src="" id="amountImg"> <br>
+	Validity:
+	<input type="text" id="validity"  onblur="validateValidity('validity','validityImg',this)"/>
+		<img src="" id="validityImg"> <br>
+	Payment	:
+	<input type="radio" name="payment" id="paid" value="true"/>Yes
+	<input type="radio" name="payment" checked="checked" id="paid" value="false" />No<br>
+	
+	<input type="button" value="Save" class="btn-primary" onclick="saveNewMobile();">
+	<input type="reset" value="Clear" id="resetButton" class="btn-primary">
+	<input type="button" value="Close" class="btn-primary" onclick="closeMobileOverlay();">
+</form>

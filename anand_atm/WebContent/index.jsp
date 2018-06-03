@@ -20,7 +20,7 @@ Anand Center
 </div>
 <div id="mainContainer" class="container text-center">
 <div class="container-fluid">
-WELCOME
+<h1><a href="/anand_atm/welcome"> WELCOME </a></h1>
 <!-- <button class="btn-primary" onclick="location.href='/anand_atm/mobiles'">Mobile</button> -->
 <!-- <button class="btn-primary" onclick="location.href='/anand_atm/dths'">DTH</button> -->
 </div>

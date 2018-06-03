@@ -4,12 +4,15 @@
 <!DOCTYPE html PUBpC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="./resources/css/style.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<!-- Stylesheet -->
+
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
 
-
+<!-- Script -->
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.0.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/index.js"/>"></script>
 <title>Anand_ATM</title>
@@ -21,8 +24,8 @@ Anand Center
 <div id="mainContainer" class="container text-center">
 <div class="container-fluid" style="display: -webkit-inline-box;">
 <div class="text-center" id="dataBox">
-			<h3>	DTH</h3>
-	<table class="table-bordered table-condensed table-hover">
+	<img src="<c:url value="/resources/img/dth.PNG" />" width="20%"/>
+	<table class="table-bordered table-condensed">
 			<tr style="background:#cccccc;">
 				<th>DTH Number</th>
 				<th>Number</th>
@@ -33,22 +36,55 @@ Anand Center
 				<th>Days Left</th>
 			</tr>
 			<c:forEach items="${dthList}" var="dth">
-			<tr>
-				<td>${dth.dthNumber}</td>
-				<td>${dth.mobileNumber}</td>
-				<td>${dth.userName}</td>
-				<td>${dth.network}</td>
-				<td>${dth.lastRecharedDate}</td>
-				<td>${dth.lastRechargedAmount}</td>
-				<td>${dth.remainingDays}</td>
-			</tr>
+				<c:choose>
+					<c:when test="${dth.remainingDays < 0}">
+						<tr class="belowZero"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${dth.remainingDays == 0}"> 
+						<tr class="zero"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${dth.remainingDays == 1}"> 
+						<tr class="one"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${dth.remainingDays == 2}"> 
+						<tr class="two"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${dth.remainingDays == 3}"> 
+						<tr class="three"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${dth.remainingDays == 4}"> 
+						<tr class="four"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${dth.remainingDays == 5}"> 
+						<tr class="five"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr class="aboveFive"> 
+							<%@include file="html/dthDataList.html" %>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</table><br>
 	</div>
 	<div style="width:20px;"></div>
 <div class="text-center" id="dataBox">
-		<h3>	Mobile</h3>
-	<table class="table-bordered table-condensed table-hover">
+		<img src="<c:url value="/resources/img/mobile.PNG" />" width="13.5%"/>
+	<table class="table-bordered table-condensed">
 			<tr style="background:#cccccc;">
 				<th>Number</th>
 				<th>Name</th>
@@ -58,21 +94,54 @@ Anand Center
 				<th>Days Left</th>
 			</tr>
 			<c:forEach items="${mobileList}" var="mobile">
-			<tr>
-				<td>${mobile.mobileNumber}</td>
-				<td>${mobile.userName}</td>
-				<td>${mobile.network}</td>
-				<td>${mobile.lastRecharedDate}</td>
-				<td>${mobile.lastRechargedAmount}</td>
-				<td>${mobile.remainingDays}</td>
-			</tr>
+				<c:choose>
+					<c:when test="${mobile.remainingDays < 0}">
+						<tr class="belowZero"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${mobile.remainingDays == 0}"> 
+						<tr class="zero"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${mobile.remainingDays == 1}"> 
+						<tr class="one"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${mobile.remainingDays == 2}"> 
+						<tr class="two"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${mobile.remainingDays == 3}"> 
+						<tr class="three"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${mobile.remainingDays == 4}"> 
+						<tr class="four"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:when test="${mobile.remainingDays == 5}"> 
+						<tr class="five"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr class="aboveFive"> 
+							<%@include file="html/mobileDataList.html" %>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</table><br>
 	</div>
 </div>
-<!-- <button class="btn-primary" onclick="openMobile()">Mobile</button> -->
-<button class="btn-primary" onclick="location.href='/anand_atm/mobiles'">Mobile</button>
-<button class="btn-primary" onclick="location.href='/anand_atm/dths'">DTH</button>
+<img class="imgDthButton" src="<c:url value="/resources/img/dth.PNG" />" width="10%" onclick="location.href='/anand_atm/dths'"/>
+<img class="imgMobileButton" src="<c:url value="/resources/img/mobile.PNG" />" width="5.5%" onclick="location.href='/anand_atm/mobiles'"/>
 </div>
 <div id="footer" class="navbar-fixed-bottom text-center">
 &copy; Ved Arakash Arya</div>

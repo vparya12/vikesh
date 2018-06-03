@@ -1,3 +1,64 @@
-#requiredastrick{
+.requiredastrick {
 	color: red;
+}
+
+.belowZero {
+	background: #cc0000;
+	color: #130fb5;
+}
+
+.zero {
+	background: #fd9005;
+	color: #130fb5;
+}
+
+.one {
+	background: #fd05ba;
+	color: #130fb5;
+}
+
+.two {
+	background: #05d9fd;
+	color: #130fb5;
+}
+
+.three {
+	background: #fdec05;
+	color: #130fb5;
+}
+
+.four {
+	background: #86afef;
+	color: #130fb5;
+}
+
+.five {
+	background: #b1b7c1;
+	color: #130fb5;
+}
+
+.aboveFive {
+
+}
+
+.editColumn{
+	border: none !important;
+}
+.highlight {
+ background-color: Yellow;
+ color: Green;
+}
+.imgMobileButton{
+	border-radius: 15px; 
+}
+.imgMobileButton:hover{
+	opacity: 0.5 !important;
+	cursor: pointer;
+}
+.imgDthButton{
+	border-radius: 45px; 
+}
+.imgDthButton:hover{
+	opacity: 0.5 !important;
+	cursor: pointer;
 }
