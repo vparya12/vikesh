@@ -1,0 +1,76 @@
+#dataBox {
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.overlayForm {
+	opacity: 1;
+	color: #000000;
+	font-size: 20px;
+}
+
+#dthForm {
+	width: 510px;
+	//text-align: center;
+	margin-left: 440px;
+	padding: 7px; background : #ccccaa;
+	display: block;
+	opacity: 1;
+	margin-top: 12%;
+	border-radius: 10px;
+	background: #ccccaa;
+}
+
+#overlay {
+	position: fixed; /* Sit on top of the page content */
+	display: none; /* Hidden by default */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(144, 144, 146, 0.74);
+	/* Black background with opacity */
+	z-index: 12;
+	/* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+}
+
+#dthEditForm {
+	width: 510px;
+	text-align: center;
+	margin-left: 440px;
+	padding: 7px; 
+	background : #ccccaa;
+	display: block;
+	opacity: 1;
+	margin-top: 12%;
+	border-radius: 10px;
+	background: #ccccaa;
+}
+
+#editOverlay {
+	position: fixed; /* Sit on top of the page content */
+	display: none; /* Hidden by default */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(144, 144, 146, 0.74);
+	/* Black background with opacity */
+	z-index: 12;
+	/* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+}
+#editColumn{
+	border: none;
+}
+.highlight {
+ background-color: Yellow;
+ color: Green;
+}
