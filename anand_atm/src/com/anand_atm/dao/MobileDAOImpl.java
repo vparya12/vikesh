@@ -13,6 +13,7 @@ import com.anand_atm.common.Constant;
 
 @Component
 public class MobileDAOImpl implements MobileDAO {
+	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -20,20 +21,19 @@ public class MobileDAOImpl implements MobileDAO {
 		namedParameterJdbcTemplate=new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-
 	@Override
 	public boolean updateMobileNumber(MobileDetails mobileVo) {
 		HashMap<String,Object> parameter = new HashMap<String,Object>();
 		parameter.put("MOBILENUMBER", mobileVo.getMobileNumber());
 		parameter.put("NETWORK", mobileVo.getNetwork());
 		parameter.put("USERNAME", mobileVo.getUserName());
-		parameter.put("VALADITY", mobileVo.getValidDays());
 		parameter.put("ALTNUMBER", mobileVo.getAlternativeNumber());
+		parameter.put("VALADITY", mobileVo.getValidDays());
 		parameter.put("AMOUNT", mobileVo.getLastRechargedAmount());
 		parameter.put("PAYMENT", mobileVo.isPayment());
 		parameter.put("ID", mobileVo.getId());
 		
-		int result = namedParameterJdbcTemplate.update(Constant.UPDATE_MOBILE, parameter);
+		int result = namedParameterJdbcTemplate.update(Constant.RECHARGE_MOBILE, parameter);
 		if(result==1) {
 			return true;
 		}else {
@@ -59,11 +59,12 @@ public class MobileDAOImpl implements MobileDAO {
 					mobile.setAlternativeNumber(rs.getLong("ALTNUMBER"));
 					mobile.setNetwork(rs.getString("NETWORK"));
 					mobile.setUserName(rs.getString("USERNAME"));
-					mobile.setLastRecharedDate(rs.getDate("RECHARGEDATE"));
+					mobile.setLastRechargedDate(rs.getDate("RECHARGEDATE"));
 					mobile.setLastRechargedAmount(rs.getInt("AMOUNT"));
 					mobile.setPayment(rs.getBoolean("PAYMENT"));
 					mobile.setValidDays(rs.getInt("VALADITY"));
 					mobile.setRemainingDays(rs.getInt("LEFTDAYS"));
+					mobile.setNextRechargeDate(rs.getDate("NEXTRECHARGEDATE"));
 					mobile.setId(rs.getInt("ID"));
 					
 					mobileLists.add(mobile);
@@ -87,6 +88,23 @@ public class MobileDAOImpl implements MobileDAO {
 		parameter.put("PAYMENT", mobileVo.isPayment());
 		
 		int result = namedParameterJdbcTemplate.update(Constant.INSERT_NEW_MOBILE, parameter);
+		if(result==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+
+	@Override
+	public boolean rechargeMobileNumber(MobileDetails mobileVo) {
+		HashMap<String,Object> parameter = new HashMap<String,Object>();
+		parameter.put("VALADITY", mobileVo.getValidDays());
+		parameter.put("AMOUNT", mobileVo.getRechargeAmount());
+		parameter.put("PAYMENT", mobileVo.isPayment());
+		parameter.put("ID", mobileVo.getId());
+		
+		int result = namedParameterJdbcTemplate.update(Constant.RECHARGE_MOBILE, parameter);
 		if(result==1) {
 			return true;
 		}else {

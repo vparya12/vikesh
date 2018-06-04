@@ -35,37 +35,40 @@
 	<div class="text-center" id="dataBox">
 	<table class="table-bordered table-condensed" style="border:none" id="mobileTable">
 			<tr style="background:#cccccc;">
+				<th>Customer Id</th>
 				<th>Number</th>
 				<th>Name</th>
 				<th>Network</th>
 				<th>Alt Number</th>
-				<th>Recharged Date</th>
-				<th>Recharged Amount</th>
+				<th>Last R. Date</th>
+				<th>Next R. Date</th>
+				<th>R. Amount</th>
 				<th>Validity</th>
 				<th>Paid</th>
 				<th>Days Left</th>
 			</tr>
 			<c:forEach items="${mobileList}" var="mobile">
 			<tr>
+				<td>ATM ${mobile.id}</td>
 				<td>${mobile.mobileNumber}</td>
 				<td>${mobile.userName}</td>
 				<td>${mobile.network}</td>
 				<td>${mobile.alternativeNumber}</td>
-				<td>${mobile.lastRecharedDate}</td>
+				<td>${mobile.lastRechargedDate}</td>
+				<td>${mobile.nextRechargeDate}</td>
 				<td>${mobile.lastRechargedAmount}</td>
 				<td>${mobile.validDays}</td>
 				<td>${mobile.payment}</td>
 				<td>${mobile.remainingDays}</td>
 				<td class="editColumn"><img src="<c:url value="/resources/img/edit.png" />"></td>
-				<td style="visibility:hidden;">${mobile.id}</td>
-				
 			</tr>
 			</c:forEach>
 		</table><br>
 		
 	</div>
-	<button type="button" class="btn-primary" onclick='openMobileForm()'>New</button><br><br>
+	<!-- <button type="button" class="btn-primary" onclick='openMobileForm()'>New</button><br><br>-->
 	<img class="imgDthButton" src="<c:url value="/resources/img/dth.PNG" />" width="10%" onclick="location.href='/anand_atm/dths'"/>
+	<img class="imgMobileButton" src="<c:url value="/resources/img/new.jpg" />" width="10%" onclick='openMobileForm()'/>
 </div>
 <div id="footer" class="navbar-fixed-bottom text-center">&copy;
 		Ved Arakash Arya

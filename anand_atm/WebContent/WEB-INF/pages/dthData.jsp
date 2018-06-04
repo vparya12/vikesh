@@ -36,38 +36,41 @@
 	<div class="text-center" id="dataBox">
 	<table class="table-bordered table-condensed" style="border:none" id="dthTable">
 			<tr style="background:#cccccc;">
+				<th>Customer Id</th>
 				<th>DTH Number</th>
-				<th>Number</th>
+				<th>Mobile Number</th>
 				<th>Name</th>
 				<th>Network</th>
 				<th>Alt Number</th>
-				<th>Recharged Date</th>
-				<th>Recharged Amount</th>
+				<th>Last R. Date</th>
+				<th>Next R. Date</th>
+				<th>R. Amount</th>
 				<th>Validity</th>
 				<th>Paid</th>
 				<th>Days Left</th>
 			</tr>
 			<c:forEach items="${dthList}" var="dth">
 			<tr>
+				<td>ATM ${dth.id}</td>
 				<td>${dth.dthNumber}</td>
 				<td>${dth.mobileNumber}</td>
 				<td>${dth.userName}</td>
 				<td>${dth.network}</td>
 				<td>${dth.alternativeNumber}</td>
-				<td>${dth.lastRecharedDate}</td>
+				<td>${dth.lastRechargedDate}</td>
+				<td>${dth.nextRechargeDate}</td>
 				<td>${dth.lastRechargedAmount}</td>
 				<td>${dth.validDays}</td>
 				<td>${dth.payment}</td>
 				<td>${dth.remainingDays}</td>
 				<td class="editColumn"><img src="<c:url value="/resources/img/edit.png" />"></td>
-				<td style="visibility:hidden;">${dth.id}</td>
 			</tr>
 			</c:forEach>
 		</table><br>
 		
 	</div>
-<button type="button" class="btn-primary" onclick='openDthForm()'>New</button><br><br>
 <img class="imgMobileButton" src="<c:url value="/resources/img/mobile.PNG" />" width="5.5%" onclick="location.href='/anand_atm/mobiles'"/>
+<img class="imgMobileButton" src="<c:url value="/resources/img/new.jpg" />" width="10%" onclick='openDthForm()'/>
 </div>	
 	<div id="footer" class="navbar-fixed-bottom text-center">&copy;
 		Ved Arakash Arya</div>

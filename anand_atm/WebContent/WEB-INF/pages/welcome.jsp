@@ -22,74 +22,81 @@
 Anand Center
 </div>
 <div id="mainContainer" class="container text-center">
-<div class="container-fluid" style="display: -webkit-inline-box;">
-<div class="text-center" id="dataBox">
-	<img src="<c:url value="/resources/img/dth.PNG" />" width="20%"/>
-	<table class="table-bordered table-condensed">
-			<tr style="background:#cccccc;">
-				<th>DTH Number</th>
-				<th>Number</th>
-				<th>Name</th>
-				<th>Network</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Days Left</th>
-			</tr>
-			<c:forEach items="${dthList}" var="dth">
-				<c:choose>
-					<c:when test="${dth.remainingDays < 0}">
-						<tr class="belowZero"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:when test="${dth.remainingDays == 0}"> 
-						<tr class="zero"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:when test="${dth.remainingDays == 1}"> 
-						<tr class="one"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:when test="${dth.remainingDays == 2}"> 
-						<tr class="two"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:when test="${dth.remainingDays == 3}"> 
-						<tr class="three"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:when test="${dth.remainingDays == 4}"> 
-						<tr class="four"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:when test="${dth.remainingDays == 5}"> 
-						<tr class="five"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<tr class="aboveFive"> 
-							<%@include file="html/dthDataList.html" %>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-		</table><br>
+	<div class="container-fluid" style="width: 100%;">
+		<div>
+			<img class="imgDthButton" src="<c:url value="/resources/img/dth.PNG" />" width="13%" onclick="location.href='/anand_atm/dths'"/>
+		</div>
+		<div class="text-center dataBox">
+			<table class="table-bordered">
+					<tr style="background:#cccccc;">
+						<th>Customer Id</th>
+						<th>DTH Number</th>
+						<th>Mobile Number</th>
+						<th>Name</th>
+						<th>Network</th>
+						<th>Last R. Date</th>
+						<th>Next R. Date</th>
+						<th>Amount</th>
+						<th>Days Left</th>
+					</tr>
+					<c:forEach items="${dthList}" var="dth">
+						<c:choose>
+							<c:when test="${dth.remainingDays < 0}">
+								<tr class="belowZero"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:when test="${dth.remainingDays == 0}"> 
+								<tr class="zero"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:when test="${dth.remainingDays == 1}"> 
+								<tr class="one"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:when test="${dth.remainingDays == 2}"> 
+								<tr class="two"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:when test="${dth.remainingDays == 3}"> 
+								<tr class="three"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:when test="${dth.remainingDays == 4}"> 
+								<tr class="four"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:when test="${dth.remainingDays == 5}"> 
+								<tr class="five"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<tr class="aboveFive"> 
+									<%@include file="html/dthDataList.html" %>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+			</table><br>
+		</div>
+	<div>
+		<img class="imgMobileButton" src="<c:url value="/resources/img/mobile.PNG" />" width="8.5%" onclick="location.href='/anand_atm/mobiles'"/>
 	</div>
-	<div style="width:20px;"></div>
-<div class="text-center" id="dataBox">
-		<img src="<c:url value="/resources/img/mobile.PNG" />" width="13.5%"/>
-	<table class="table-bordered table-condensed">
+	<div class="text-center dataBox">
+	<table class="table-bordered">
 			<tr style="background:#cccccc;">
-				<th>Number</th>
+				<th>Customer Id</th>
+				<th>Mobile Number</th>
 				<th>Name</th>
 				<th>Network</th>
-				<th>Date</th>
+				<th>Last R. Date</th>
+				<th>Next R. Date</th>
 				<th>Amount</th>
 				<th>Days Left</th>
 			</tr>
@@ -140,8 +147,6 @@ Anand Center
 		</table><br>
 	</div>
 </div>
-<img class="imgDthButton" src="<c:url value="/resources/img/dth.PNG" />" width="10%" onclick="location.href='/anand_atm/dths'"/>
-<img class="imgMobileButton" src="<c:url value="/resources/img/mobile.PNG" />" width="5.5%" onclick="location.href='/anand_atm/mobiles'"/>
 </div>
 <div id="footer" class="navbar-fixed-bottom text-center">
 &copy; Ved Arakash Arya</div>

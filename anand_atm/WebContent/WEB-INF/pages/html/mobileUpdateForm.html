@@ -1,28 +1,46 @@
 <form>
-	Number:
+<div class="labelClass">
+<label>Customer Id<span class="requiredastrick">*</span> :</label>
+<label>Mobile Number<span class="requiredastrick">*</span> :</label>
+<label>Network<span class="requiredastrick">*</span> :</label>
+<label>User Name<span class="requiredastrick">*</span> :</label>
+<label>Alt Number :</label>
+<label>Amount<span class="requiredastrick">*</span> :</label>
+<label>Validity<span class="requiredastrick">*</span> :</label>
+<label>Payment<span class="requiredastrick">*</span> :</label>
+</div>
+<div class="inputClass">
+	<input type="text" id="editId" readonly="readonly" />
 	<input type="text" id="editMobileNumber" onblur="validateMobileNumber('editMobileNumber','editMobileNumberImg',this)"/>
-		<img src="" id="editMobileNumberImg"><br>
-	Network:
-	<input type="text" id="editNetwork" onblur="validateNetwork('editNetwork','editNetworkImg',this)"/>
-		<img src="" id="editNetworkImg"> <br>
-	Alternative:
-	<input type="text" id="editAltNumber" onblur="validateAltNumber('editAltNumber','editAtNumberImg',this)" />
-		<img src="" id="editAtNumberImg"><br> 
-	User Name:
+		<img src="" id="editMobileNumberImg">
+	<select id="editNetwork" style="width: 70.6%;height:4%; margin-bottom: 3px;margin-top: 3px;" onblur="validateNetwork('editNetwork','editNetworkImg',this)">
+		<option value="Aircel">Aircel</option>
+		<option value="Airtel" selected="selected">Airtel</option>
+		<option value="BSNL">BSNL</option>
+		<option value="Idea">Idea</option>
+		<option value="Jio">Jio</option>
+		<option value="MTNL">MTNL</option>
+		<option value="MTS">MTS</option>
+		<option value="Reliance">Reliance</option>
+		<option value="Tata Docomo">Tata Docomo</option>
+		<option value="Telenor">Telenor</option>
+		<option value="Vodafone">Vodafone</option>
+	</select>
+		<img src="" id="editNetworkImg">
 	<input type="text" id="editUserName"  onblur="validateUserName('editUserName','editUserNameImg',this)"/>
-		<img src="" id="editUserNameImg"> <br>
-	Amount:
+		<img src="" id="editUserNameImg">
+	<input type="text" id="editAltNumber" onblur="validateAltNumber('editAltNumber','editAtNumberImg',this)" />
+		<img src="" id="editAtNumberImg">
 	<input type="text" id="editAmount"  onblur="validateAmount('editAmount','editAmountImg',this)" />
-		<img src="" id="editAmountImg"> <br>
-	Validity:
+		<img src="" id="editAmountImg"> 
 	<input type="text" id="editValidity"  onblur="validateValidity('editValidity','editValidityImg',this)"/>
-		<img src="" id="editValidityImg"> <br>
-	<input type="hidden" id="editId" />
-	Payment	:
+		<img src="" id="editValidityImg"><br>
 	<input type="radio" name="editPayment" id="radioYes" value="true"/>Yes
-	<input type="radio" id="radioNo" name="editPayment" checked="checked" value="false" />No<br>
-	
+	<input type="radio" id="radioNo" name="editPayment" checked="checked" value="false" />No
+</div>
+<div class="buttonClass">
 	<input type="button" value="Update" class="btn-primary" onclick="updateMobile();">
 	<input type="reset" value="Clear" id="editResetButton" class="btn-primary">
 	<input type="button" value="Close" class="btn-primary" onclick="closeEditMobileOverlay();">
+</div>
 </form>

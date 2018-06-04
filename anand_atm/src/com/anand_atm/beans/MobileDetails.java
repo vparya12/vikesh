@@ -8,12 +8,13 @@ public class MobileDetails {
 	private String network;
 	private String userName;
 	private Long alternativeNumber;
-	private Date lastRecharedDate;
+	private Date lastRechargedDate;
 	private Integer lastRechargedAmount;
 	private Integer rechargeAmount;
 	private Integer validDays;
 	private boolean payment;
 	private int remainingDays;
+	private Date nextRechargeDate;
 	
 	public Long getMobileNumber() {
 		return mobileNumber;
@@ -39,11 +40,11 @@ public class MobileDetails {
 	public void setAlternativeNumber(Long alternativeNumber) {
 		this.alternativeNumber = alternativeNumber;
 	}
-	public Date getLastRecharedDate() {
-		return lastRecharedDate;
+	public Date getLastRechargedDate() {
+		return lastRechargedDate;
 	}
-	public void setLastRecharedDate(Date lastRecharedDate) {
-		this.lastRecharedDate = lastRecharedDate;
+	public void setLastRechargedDate(Date lastRechargedDate) {
+		this.lastRechargedDate = lastRechargedDate;
 	}
 	public Integer getLastRechargedAmount() {
 		return lastRechargedAmount;
@@ -80,6 +81,12 @@ public class MobileDetails {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Date getNextRechargeDate() {
+		return nextRechargeDate;
+	}
+	public void setNextRechargeDate(Date nextRechargeDate) {
+		this.nextRechargeDate = nextRechargeDate;
 	}
 	
 	

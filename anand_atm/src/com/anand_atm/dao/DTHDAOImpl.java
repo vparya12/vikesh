@@ -30,13 +30,14 @@ public class DTHDAOImpl implements DTHDAO {
 					dth.setDthNumber(rs.getLong("DTHNUMBER"));
 					dth.setMobileNumber(rs.getLong("MOBILENUMBER"));
 					dth.setAlternativeNumber(rs.getLong("ALTNUMBER"));
-					dth.setLastRecharedDate(rs.getDate("RECHARGEDATE"));
+					dth.setLastRechargedDate(rs.getDate("RECHARGEDATE"));
 					dth.setNetwork(rs.getString("NETWORK"));
 					dth.setPayment(rs.getBoolean("PAYMENT"));
 					dth.setUserName(rs.getString("USERNAME"));
 					dth.setValidDays(rs.getInt("VALADITY"));
 					dth.setLastRechargedAmount(rs.getInt("AMOUNT"));
 					dth.setRemainingDays(rs.getInt("LEFTDAYS"));
+					dth.setNextRechargeDate(rs.getDate("NEXTRECHARGEDATE"));
 					dth.setId(rs.getInt("ID"));
 					
 					dth_List.add(dth);
@@ -94,6 +95,23 @@ public class DTHDAOImpl implements DTHDAO {
 		}else {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean rechargeDTHNumber(DTHDetails dthVO) {
+		HashMap<String,Object> parameter = new HashMap<String,Object>();
+		parameter.put("VALADITY", dthVO.getValidDays());
+		parameter.put("AMOUNT", dthVO.getRechargeAmount());
+		parameter.put("PAYMENT", dthVO.isPayment());
+		parameter.put("ID", dthVO.getId());
+		
+		int result = namedParameterJdbcTemplate.update(Constant.RECHARGE_DTH, parameter);
+		if(result==1) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 }

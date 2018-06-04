@@ -71,7 +71,9 @@ var updateDth = function(){
 		dthData["validDays"]=$("#editValidity").val();
 		dthData["payment"]=$('input[name=editPayment]:checked').val();
 		dthData["lastRechargedAmount"]=$("#editAmount").val();
-		dthData["id"] = $("#editId").val();
+		var id = $("#editId").val();
+		dthData["id"] = id.substr(3,(id.length));
+		
 		$.ajax({
 			type: 'POST',
 			url:  prefix + '/updateDth',
@@ -92,8 +94,36 @@ var updateDth = function(){
 				alert("Done!");
 			}
 	   });
-	
 }
+
+var rechargeDth = function(){
+	var dthData = {};
+	dthData["validDays"]=$("#editValidity").val();
+	dthData["payment"]=$('input[name=editPayment]:checked').val();
+	dthData["rechargeAmount"]=$("#editAmount").val();
+	var id = $("#editId").val();
+	dthData["id"] = id.substr(3,(id.length));
+	
+	$ajax({
+		type: 'POST',
+		url: prefix + '/rechargeDth',
+		data: JSON.stringify(dthData),
+		dataType: 'json',
+		contentType: 'application/json; charset=utf-8',
+		timeout: 100000,
+		async: true,
+		success: function(result){
+			
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.status + ' ' + jqXHR.responseText);
+		},
+		done: function(e){
+			alert("Done!");
+		}
+	});
+}
+
 var closeDthOverlay = function(){
 	$("#dthForm form img").attr("src","");
 	$("#resetButton").click();
@@ -118,19 +148,23 @@ $(document).ready(function() {
 	});
 	
 	$("#dthTable tr td img").click(function(e) {
+		
 		 $("#dthTable tr").removeClass("highlight");
 		 var mobile = $(e.target).closest("tr").text();
 		 var data = mobile.split('				');
-		 var dth =data[1].substr(0,(data[1].length-1));
-		 var mobileNumber =data[2].substr(0,(data[2].length-1));
-		 var userName =data[3].substr(0,(data[3].length-1));
-		 var network =data[4].substr(0,(data[4].length-1));
-		 var altNumber =data[5].substr(0,(data[5].length-1));
-		 var amount =data[7].substr(0,(data[7].length-1));
-		 var validity =data[8].substr(0,(data[8].length-1));
-		 var paid =data[9].substr(0,(data[9].length-1));
-		 var id =data[12].substr(0,(data[12].length-1));
+		 var id				= 	data[1].substr(0,(data[1].length-1));
+		 var dth 			=	data[2].substr(0,(data[2].length-1));
+		 var mobileNumber	=	data[3].substr(0,(data[3].length-1));
+		 var userName 		=	data[4].substr(0,(data[4].length-1));
+		 var network 		=	data[5].substr(0,(data[5].length-1));
+		 var altNumber 		=	data[6].substr(0,(data[6].length-1));
+		 var amount 		=	data[9].substr(0,(data[9].length-1));
+		 var validity 		=	data[10].substr(0,(data[10].length-1));
+		 var paid 			=	data[11].substr(0,(data[11].length-1));
+		 
 		 $("#editOverlay").css("display","block");
+		 
+		 $("#editId").val(id);
 		 $("#editDthNumber").val(dth);
 		 $("#editMobileNumber").val(mobileNumber);
 		 $("#editNetwork").val(network);
@@ -138,7 +172,7 @@ $(document).ready(function() {
 		 $("#editAltNumber").val(altNumber);
 		 $("#editAmount").val(amount);
 		 $("#editValidity").val(validity);
-		 $("#editId").val(id);
+		
 		 if(paid){
 			 $("#radioYes").prop("checked",true);
 		 }else{

@@ -1,41 +1,47 @@
 <form>
 <div class="labelClass">
-<label>DTH Number :</label>
-<label>Mobile Number :</label>
-<label>Network :</label>
-<label>User Name :</label>
-<label>Alternative Number :</label>
-<label>Amount :</label>
-<label>Validity :</label>
-<label>Payment :</label>
+<label>DTH Number<span class="requiredastrick">*</span> :</label>
+<label>Mobile Number<span class="requiredastrick">*</span> :</label>
+<label>Network<span class="requiredastrick">*</span> :</label>
+<label>User Name<span class="requiredastrick">*</span> :</label>
+<label>Alt Number :</label>
+<label>Amount<span class="requiredastrick">*</span> :</label>
+<label>Validity<span class="requiredastrick">*</span> :</label>
+<label>Payment<span class="requiredastrick">*</span> :</label>
 </div>
 <div class="inputClass">
-</div>	Dth Number:
 	<input type="text" id="dthNumber" onblur="validateDthNumber('dthNumber','dthNumberImg',this)"/>
-		<img src="" id="dthNumberImg"><br>
-	Number:
+		<img src="" id="dthNumberImg">
 	<input type="text" id="mobileNumber" onblur="validateMobileNumber('mobileNumber','mobileNumberImg',this)"/>
-		<img src="" id="mobileNumberImg"><br>
-	Network:
-	<input type="text" id="network" onblur="validateNetwork('network','networkImg',this)"/>
-		<img src="" id="networkImg"> <br>
-	Alternative:
-	<input type="text" id="altNumber" onblur="validateAltNumber('altNumber','altNumberImg',this)" />
-		<img src="" id="altNumberImg"><br> 
-	User Name:
+		<img src="" id="mobileNumberImg">
+	<select id="network" style="width: 70.6%;height:4%; margin-bottom: 2px;margin-top: 3px;" onblur="validateNetwork('network','networkImg',this)">
+		<option value="Aircel">Aircel</option>
+		<option value="Airtel" selected="selected">Airtel</option>
+		<option value="BSNL">BSNL</option>
+		<option value="Idea">Idea</option>
+		<option value="Jio">Jio</option>
+		<option value="MTNL">MTNL</option>
+		<option value="MTS">MTS</option>
+		<option value="Reliance">Reliance</option>
+		<option value="Tata Docomo">Tata Docomo</option>
+		<option value="Telenor">Telenor</option>
+		<option value="Vodafone">Vodafone</option>
+	</select>
+		<img src="" id="networkImg">
 	<input type="text" id="userName"  onblur="validateUserName('userName','userNameImg',this)"/>
-		<img src="" id="userNameImg"><br>
-	Amount:
+		<img src="" id="userNameImg">
+	<input type="text" id="altNumber" onblur="validateAltNumber('altNumber','altNumberImg',this)" />
+		<img src="" id="altNumberImg">
 	<input type="text" id="amount"  onblur="validateAmount('amount','amountImg',this)" />
-		<img src="" id="amountImg"> <br>
-	Validity:
+		<img src="" id="amountImg">
 	<input type="text" id="validity"  onblur="validateValidity('validity','validityImg',this)"/>
-		<img src="" id="validityImg"> <br>
-	Payment	:
+		<img src="" id="validityImg"><br>
 	<input type="radio" name="payment" id="paid" value="true"/>Yes
-	<input type="radio" name="payment" checked="checked" id="paid" value="false" />No<br>
-	
+	<input type="radio" name="payment" checked="checked" id="paid" value="false" />No
+</div>
+<div class="buttonClass">
 	<input type="button" value="Save" class="btn-primary" onclick="saveNewDth();">
 	<input type="reset" value="Clear" id="resetButton"  class="btn-primary">
 	<input type="button" value="Close" class="btn-primary" onclick="closeDthOverlay();">
+</div>
 </form>

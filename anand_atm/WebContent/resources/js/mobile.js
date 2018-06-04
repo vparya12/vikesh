@@ -69,7 +69,8 @@ var updateMobile = function(){
 		mobileData["validDays"]=$("#editValidity").val();
 		mobileData["payment"]=$('input[name=editPayment]:checked').val();
 		mobileData["lastRechargedAmount"]=$("#editAmount").val();
-		mobileData["id"] = $("#editId").val();
+		var id = $("#editId").val();
+		mobileData["id"] = id.substr(3,(id.length));
 		$.ajax({
 			type: 'POST',
 			url:  prefix + '/updateMobile',
@@ -90,7 +91,34 @@ var updateMobile = function(){
 				alert("Done!");
 			}
 	   });
+}
+
+var rechargeMobile = function(){
+	var mobileData = {};
+	mobileData["validDays"]=$("#editValidity").val();
+	mobileData["payment"]=$('input[name=editPayment]:checked').val();
+	mobileData["rechargeAmount"]=$("#editAmount").val();
+	var id = $("#editId").val();
+	mobileData["id"] = id.substr(3,(id.length));
 	
+	$ajax({
+		type: 'POST',
+		url: prefix + '/rechargeMobile',
+		data: JSON.stringify(mobileData),
+		dataType: 'json',
+		contentType: 'application/json; charset=utf-8',
+		timeout: 100000,
+		async: true,
+		success: function(result){
+			
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.status + ' ' + jqXHR.responseText);
+		},
+		done: function(e){
+			alert("Done!");
+		}
+	});
 }
 
 var closeMobileOverlay = function(){
@@ -119,24 +147,29 @@ $(document).ready(function() {
 	
 	$("#mobileTable tr td img").click(function(e) {
 		 $("#mobileTable tr").removeClass("highlight");
+		 
 		 var mobile = $(e.target).closest("tr").text();
 		 var data = mobile.split('				');
-		 var mobileNumber =data[1].substr(0,(data[1].length-1));
-		 var userName =data[2].substr(0,(data[2].length-1));
-		 var network =data[3].substr(0,(data[3].length-1));
-		 var altNumber =data[4].substr(0,(data[4].length-1));
-		 var amount =data[6].substr(0,(data[6].length-1));
-		 var validity =data[7].substr(0,(data[7].length-1));
-		 var paid =data[8].substr(0,(data[8].length-1));
-		 var id =data[11].substr(0,(data[11].length-1));
+		 
+		 var id 			=data[1].substr(0,(data[1].length-1));
+		 var mobileNumber 	=data[2].substr(0,(data[2].length-1));
+		 var userName 		=data[3].substr(0,(data[3].length-1));
+		 var network 		=data[4].substr(0,(data[4].length-1));
+		 var altNumber 		=data[5].substr(0,(data[5].length-1));
+		 var amount 		=data[8].substr(0,(data[8].length-1));
+		 var validity 		=data[9].substr(0,(data[9].length-1));
+		 var paid 			=data[10].substr(0,(data[10].length-1));
+		 
 		 $("#editOverlay").css("display","block");
+		 
+		 $("#editId").val(id);
 		 $("#editMobileNumber").val(mobileNumber);
 		 $("#editNetwork").val(network);
 		 $("#editUserName").val(userName);
 		 $("#editAltNumber").val(altNumber);
 		 $("#editAmount").val(amount);
 		 $("#editValidity").val(validity);
-		 $("#editId").val(id);
+		
 		 if(paid){
 			 $("#radioYes").prop("checked",true);
 		 }else{
