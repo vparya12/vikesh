@@ -12,6 +12,8 @@ public interface DTHDAO {
 	
 	public boolean updateDTHNumber(DTHDetails dthDetails);
 	
+	public boolean rechargeDTHNumber(DTHDetails dthDetails);
+	
 	public boolean deleteDTHNumber(DTHDetails dthDetails);
 	
 }

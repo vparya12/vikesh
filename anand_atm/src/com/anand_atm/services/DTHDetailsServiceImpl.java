@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.anand_atm.beans.DTHDetails;
 import com.anand_atm.dao.DTHDAO;
 
@@ -28,7 +27,6 @@ public class DTHDetailsServiceImpl implements DTHDetailsService {
 
 	@Override
 	public boolean deleteDTHNumber(DTHDetails dthDetails) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -40,6 +38,11 @@ public class DTHDetailsServiceImpl implements DTHDetailsService {
 		dthVO.setLastRechargedAmount(dthVO.getRechargeAmount());
 		boolean flag = dthDao.newDthDetails(dthVO);
 		return flag;
+	}
+
+	@Override
+	public boolean rechargeDTHNumber(DTHDetails dthDetails) {
+		return dthDao.rechargeDTHNumber(dthDetails);
 	}
 
 }

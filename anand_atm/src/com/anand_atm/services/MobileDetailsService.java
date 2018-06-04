@@ -12,6 +12,8 @@ public interface MobileDetailsService {
 	
 	public boolean updateMobileNumber(MobileDetails mobileDetails);
 	
+	public boolean rechargeMobileNumber(MobileDetails mobileDetails);
+	
 	public boolean deleteMobileNumber(MobileDetails mobileDetails);
 	
 		

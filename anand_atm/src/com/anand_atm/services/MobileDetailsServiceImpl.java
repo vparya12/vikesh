@@ -40,4 +40,9 @@ public class MobileDetailsServiceImpl implements MobileDetailsService{
 		return flag;
 	}
 
+	@Override
+	public boolean rechargeMobileNumber(MobileDetails mobileDetails) {
+		return mobileDao.rechargeMobileNumber(mobileDetails);
+	}
+
 }

@@ -53,4 +53,19 @@ public class DthController {
 		}
 		return resp;
 	}
+	
+	@RequestMapping(value="/rechargeDth", method=RequestMethod.POST)
+	public @ResponseBody AjaxResponseBody rechargeMobileDetails(@RequestBody DTHDetails dth) {
+		AjaxResponseBody resp = new AjaxResponseBody();
+		boolean saveFlag =	dthService.rechargeDTHNumber(dth);
+		if(saveFlag) {
+			resp.setSuccess();
+			resp.setData("Successfully recharged DTH number "+dth.getDthNumber());
+		}
+		else {
+			resp.setFailure();
+			resp.setData("Cant not able to rechare DTH Number "+dth.getDthNumber()+". Please Try Again.");
+		}
+		return resp;
+	}
 }

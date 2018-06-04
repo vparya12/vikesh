@@ -12,5 +12,7 @@ public interface DTHDetailsService {
 	
 	public boolean updateDTHNumber(DTHDetails dthDetails);
 	
+	public boolean rechargeDTHNumber(DTHDetails dthDetails);
+	
 	public boolean deleteDTHNumber(DTHDetails dthDetails);
 }

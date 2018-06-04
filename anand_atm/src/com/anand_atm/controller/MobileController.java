@@ -56,4 +56,19 @@ public class MobileController {
 		}
 		return resp;
 	}
+	
+	@RequestMapping(value="/rechargeMobile", method=RequestMethod.POST)
+	public @ResponseBody AjaxResponseBody rechargeMobileDetails(@RequestBody MobileDetails mobile) {
+		AjaxResponseBody resp = new AjaxResponseBody();
+		boolean saveFlag =	mobileService.rechargeMobileNumber(mobile);
+		if(saveFlag) {
+			resp.setSuccess();
+			resp.setData("Successfully rechrged Mobile number "+mobile.getMobileNumber());
+		}
+		else {
+			resp.setFailure();
+			resp.setData("Cant not able to recharge Mobile Number "+mobile.getMobileNumber()+". Please Try Again.");
+		}
+		return resp;
+	}
 }
