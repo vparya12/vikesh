@@ -1,3 +1,4 @@
+
 package com.anand_atm.controller;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ public class AjaxController {
 	public @ResponseBody AjaxResponseBody getMethodCall() {
 		AjaxResponseBody resp = new AjaxResponseBody();
 		resp.setStatusCode("200");
+		resp.setData("ved");
 		resp.setStatusMessage("SUCCESS");
 		resp.setData("Get Method Success");
 		return resp;
